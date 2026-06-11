@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0041)file:///C:/Users/Per/Downloads/index.html -->
+<!-- saved from url=(0043)file:///C:/Users/Per/Downloads/index_3.html -->
 <html lang="sv"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -397,7 +397,7 @@
     <span class="header-icon">🧊</span>
     <div>
       <h1>Frysregister</h1>
-      <p id="header-sub">0 förpackningar</p>
+      <p id="header-sub">4 förpackningar · 2.0 kg</p>
     </div>
     <div class="header-spacer"></div>
     <button class="icon-btn" onclick="setView(&#39;summary&#39;)" title="Sammanställning">📋</button>
@@ -407,9 +407,9 @@
     <button class="icon-btn" onclick="setView(&#39;settings&#39;)" title="Inställningar">⚙️</button>
   </div>
   <div class="tabs" id="tabs"><button class="tab active" onclick="setTab(&#39;Alla&#39;)">
-      Alla <span class="count">0</span></button><button class="tab " onclick="setTab(&#39;Garage&#39;)">
-      Garage <span class="count">0</span></button><button class="tab " onclick="setTab(&#39;Källare&#39;)">
-      Källare <span class="count">0</span></button><button class="tab " onclick="setTab(&#39;Kök&#39;)">
+      Alla <span class="count">4</span></button><button class="tab " onclick="setTab(&#39;Garage&#39;)">
+      Garage <span class="count">2</span></button><button class="tab " onclick="setTab(&#39;Källare&#39;)">
+      Källare <span class="count">2</span></button><button class="tab " onclick="setTab(&#39;Kök&#39;)">
       Kök <span class="count">0</span></button></div>
 </header>
 
@@ -418,17 +418,65 @@
   <div id="view-inventory">
     <div id="eat-first-banner"></div>
     <div class="stats" id="stats">
-    <div class="stat-card"><div class="stat-val">0</div><div class="stat-lbl">Förpackningar</div></div>
-    <div class="stat-card"><div class="stat-val">–</div><div class="stat-lbl">Total vikt</div></div>
+    <div class="stat-card"><div class="stat-val">4</div><div class="stat-lbl">Förpackningar</div></div>
+    <div class="stat-card"><div class="stat-val">2.0 kg</div><div class="stat-lbl">Total vikt</div></div>
     <div class="stat-card"><div class="stat-val" style="color:var(--accent)">0</div><div class="stat-lbl">Över rek. tid</div></div></div>
     <button class="add-btn" onclick="openAdd()"><span>＋</span> Lägg till vara</button>
     <div class="search-wrap">
       <span class="search-icon">🔍</span>
       <input type="text" id="search" placeholder="Sök vara…" oninput="render()">
     </div>
-    <div class="filters" id="filters"><button class="filter-chip active" onclick="setFilter(&#39;Alla&#39;)"> Alla</button></div>
+    <div class="filters" id="filters"><button class="filter-chip active" onclick="setFilter(&#39;Alla&#39;)"> Alla</button><button class="filter-chip " onclick="setFilter(&#39;Vilt&#39;)">🦌 Vilt</button></div>
     <div class="filters" id="cut-filters" style="margin-top:-12px"></div>
-    <div class="items" id="items"><div class="empty"><div class="empty-icon">🧊</div><p>Inga varor här ännu</p></div></div>
+    <div class="items" id="items">
+      <div class="item-card " data-id="mq95hzj6hgncborf69">
+        <div class="item-emoji">🦌</div>
+        <div class="item-info">
+          <div class="item-name">Rådjur – Ytterlår</div>
+          <div class="item-meta">Garage · Rådjur · Ytterlår · Säsong 2026</div>
+          <div class="item-tags">
+            <span class="tag">3 juni 2026</span>
+            <span class="tag" style="background:rgba(138,144,168,0.15);color:var(--muted)">Rek. 12 mån</span>
+            
+          </div>
+          
+        </div>
+        <div class="qty-stepper">
+          <div class="qty-btns">
+            <button class="qty-btn minus" onclick="changeQty(&#39;mq95hzj6hgncborf69&#39;, -1)">−</button>
+            <span class="qty-num">2</span>
+            <button class="qty-btn plus" onclick="changeQty(&#39;mq95hzj6hgncborf69&#39;, 1)">＋</button>
+          </div>
+          <div class="qty-edit-row">
+            <button class="mini-btn" onclick="openEdit(&#39;mq95hzj6hgncborf69&#39;)">✏️ Ändra</button>
+            <button class="mini-btn" style="color:var(--danger)" onclick="askDelete(&#39;mq95hzj6hgncborf69&#39;)">Ta bort</button>
+          </div>
+        </div>
+      </div>
+      <div class="item-card " data-id="mq96trao6hcte7lhyy">
+        <div class="item-emoji">🦌</div>
+        <div class="item-info">
+          <div class="item-name">Vildsvin – Ytterlår</div>
+          <div class="item-meta">Källare · Vildsvin · Ytterlår · 1 kg/förp · = 2.0 kg · Säsong 2026</div>
+          <div class="item-tags">
+            <span class="tag">3 juni 2026</span>
+            <span class="tag" style="background:rgba(138,144,168,0.15);color:var(--muted)">Rek. 12 mån</span>
+            
+          </div>
+          
+        </div>
+        <div class="qty-stepper">
+          <div class="qty-btns">
+            <button class="qty-btn minus" onclick="changeQty(&#39;mq96trao6hcte7lhyy&#39;, -1)">−</button>
+            <span class="qty-num">2</span>
+            <button class="qty-btn plus" onclick="changeQty(&#39;mq96trao6hcte7lhyy&#39;, 1)">＋</button>
+          </div>
+          <div class="qty-edit-row">
+            <button class="mini-btn" onclick="openEdit(&#39;mq96trao6hcte7lhyy&#39;)">✏️ Ändra</button>
+            <button class="mini-btn" style="color:var(--danger)" onclick="askDelete(&#39;mq96trao6hcte7lhyy&#39;)">Ta bort</button>
+          </div>
+        </div>
+      </div></div>
   </div>
 
   <!-- SUMMARY VIEW -->
@@ -446,6 +494,50 @@
     <div class="view-tabs">
       <button class="view-tab active" onclick="setView(&#39;recipes&#39;)">🍳 Recept</button>
       <button class="view-tab" onclick="setView(&#39;inventory&#39;)">← Tillbaka</button>
+    </div>
+
+    <!-- MIDDAGSKOMPONERAREN -->
+    <div class="panel" style="border-color:rgba(212,165,189,0.45)">
+      <h3 style="color:#d4a5bd">🍽️ Komponera en middag</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:12px;">
+        AI:n tittar på allt som finns i dina frysar och sätter ihop en hel meny – med inköpslista på det som saknas.
+      </p>
+      <div class="form-group">
+        <label>Vilka rätter ska ingå?</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="filter-chip course-chip" data-course="Förrätt" onclick="toggleCourse(this)">🥂 Förrätt</button>
+          <button class="filter-chip course-chip active" data-course="Varmrätt" onclick="toggleCourse(this)">🍖 Varmrätt</button>
+          <button class="filter-chip course-chip" data-course="Efterrätt" onclick="toggleCourse(this)">🍰 Efterrätt</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Önskemål (valfritt)</label>
+        <textarea id="menu-wish" rows="2" style="resize:none" placeholder="t.ex. festmiddag för 6, gärna älgen, inget krångligt…"></textarea>
+      </div>
+      <button class="btn-save" style="width:100%;background:#d4a5bd" id="menu-btn" onclick="composeMenu()">🍽️ Komponera middag</button>
+      <div id="menu-result" style="margin-top:16px;"></div>
+    </div>
+
+    <!-- AI-MIDDAGSKOMPONÖREN -->
+    <div class="panel" style="border-color:rgba(212,165,189,0.5)">
+      <h3 style="color:#d4a5bd">🍽️ Komponera en middag</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:12px;">
+        AI:n ser hela frysen, letar recept på nätet och sätter ihop en meny – plus inköpslista på det som saknas.
+      </p>
+      <div class="form-group">
+        <label>Vilka rätter?</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="filter-chip" id="course-starter" onclick="toggleCourse(this)">🥗 Förrätt</button>
+          <button class="filter-chip active" id="course-main" onclick="toggleCourse(this)">🍖 Varmrätt</button>
+          <button class="filter-chip" id="course-dessert" onclick="toggleCourse(this)">🍰 Efterrätt</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Önskemål (valfritt)</label>
+        <textarea id="menu-wish" rows="2" style="resize:none" placeholder="t.ex. festligt för 6 personer, höstigt, gärna älgen…"></textarea>
+      </div>
+      <button class="btn-save" style="width:100%;background:#d4a5bd" id="menu-btn" onclick="composeMenu()">🍽️ Komponera meny</button>
+      <div id="menu-result" style="margin-top:16px;"></div>
     </div>
 
     <!-- AI-KOCKEN -->
@@ -914,6 +1006,157 @@ function renderRecipesView() {
     }).join('');
 }
 
+// ── MIDDAGSKOMPONERAREN ───────────────────────────────────────────────
+function toggleCourse(btn) {
+  btn.classList.toggle('active');
+}
+
+function inventoryAsText() {
+  return items.map(i =>
+    `- ${i.name} [${i.category}] (${i.qty||1} förp${i.weight ? ', ' + i.weight + ' kg/förp' : ''}, frys: ${i.fridge}${i.date ? ', inlagd ' + i.date : ''})`).join('\n');
+}
+
+async function callClaude(prompt, maxTokens) {
+  const headers = { 'Content-Type': 'application/json' };
+  const apiKey = localStorage.getItem(APIKEY_KEY);
+  if (apiKey) {
+    headers['x-api-key'] = apiKey;
+    headers['anthropic-version'] = '2023-06-01';
+    headers['anthropic-dangerous-direct-browser-access'] = 'true';
+  }
+  const resp = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: maxTokens || 1500,
+      messages: [{ role: 'user', content: prompt }],
+    }),
+  });
+  if (!resp.ok) throw new Error('HTTP ' + resp.status);
+  const data = await resp.json();
+  const text = (data.content||[]).filter(b => b.type === 'text').map(b => b.text).join('\n');
+  if (!text) throw new Error('Tomt svar');
+  return text;
+}
+
+function apiErrorHtml(targetInputId) {
+  const hasKey = !!localStorage.getItem(APIKEY_KEY);
+  return `
+    <div style="background:rgba(224,112,112,0.1);border:1px solid rgba(224,112,112,0.3);border-radius:10px;padding:14px;font-size:13px;line-height:1.6;">
+      ⚠️ Kunde inte nå AI:n.${hasKey ? ' Kontrollera att API-nyckeln är giltig och att du har internet.' : `
+      <br><br>Lägg in en API-nyckel (skapas på console.anthropic.com):
+      <div style="display:flex;gap:8px;margin-top:10px;">
+        <input type="password" id="${targetInputId}" placeholder="sk-ant-…" style="flex:1">
+        <button class="btn-save" style="padding:10px 16px" onclick="saveAIKeyFrom('${targetInputId}')">Spara</button>
+      </div>`}
+    </div>`;
+}
+
+function saveAIKeyFrom(inputId) {
+  const v = document.getElementById(inputId).value.trim();
+  if (!v) return;
+  localStorage.setItem(APIKEY_KEY, v);
+  toast('API-nyckel sparad – prova igen!');
+}
+
+async function composeMenu() {
+  const btn = document.getElementById('menu-btn');
+  const out = document.getElementById('menu-result');
+  const courses = [...document.querySelectorAll('.course-chip.active')].map(b => b.dataset.course);
+  const wish = document.getElementById('menu-wish').value.trim();
+
+  if (!courses.length) { out.innerHTML = '<p style="color:var(--warn);font-size:13px">Välj minst en rätt!</p>'; return; }
+  if (!items.length) { out.innerHTML = '<p style="color:var(--warn);font-size:13px">Frysen är tom – lägg in varor först!</p>'; return; }
+
+  const prompt = `Du är en svensk kock specialiserad på viltkött och husmanskost.
+
+Komponera en middag med följande rätter: ${courses.join(', ')}.
+${wish ? 'Önskemål: ' + wish : 'Middag för 4 personer.'}
+
+Detta finns i mina frysar (utgå från detta så långt det går, prioritera gärna varor som legat länge):
+${inventoryAsText()}
+
+Svara på svenska i EXAKT detta format (upprepa RÄTT-blocket för varje rätt):
+
+RÄTT: (Förrätt/Varmrätt/Efterrätt)
+TITEL: (rättens namn)
+BESKRIVNING: (1-2 meningar)
+INGREDIENSER: (en per rad med mängd, markera med [FRYS] det som tas ur frysen)
+GÖR SÅ HÄR: (korta numrerade steg)
+VINTIPS: (druva/region)
+
+INKÖPSLISTA: (allt som INTE finns i frysen, en vara per rad, grupperat och med mängder)`;
+
+  btn.disabled = true;
+  btn.textContent = '👨‍🍳 Komponerar menyn…';
+  out.innerHTML = '<p style="font-size:13px;color:var(--muted)">AI-kocken planerar – tar ca 15–30 sekunder…</p>';
+
+  try {
+    const text = await callClaude(prompt, 2500);
+    renderMenu(text, out);
+  } catch (err) {
+    out.innerHTML = apiErrorHtml('menu-key-input');
+  }
+  btn.disabled = false;
+  btn.textContent = '🍽️ Komponera middag';
+}
+
+function renderMenu(text, out) {
+  // Dela upp i rätter och inköpslista
+  const shoppingSplit = text.split(/INKÖPSLISTA:/);
+  const coursesText = shoppingSplit[0];
+  const shopping = shoppingSplit[1] ? shoppingSplit[1].trim() : '';
+
+  const courseBlocks = coursesText.split(/(?=RÄTT:)/).filter(b => b.trim().startsWith('RÄTT:'));
+
+  const get = (block, label) => {
+    const re = new RegExp(label + ':([\\s\\S]*?)(?=\\n[A-ZÅÄÖ ]{3,}:|$)');
+    const m = block.match(re);
+    return m ? m[1].trim() : '';
+  };
+
+  const courseEmoji = { 'Förrätt':'🥂', 'Varmrätt':'🍖', 'Efterrätt':'🍰' };
+
+  let html = courseBlocks.map((block, idx) => {
+    const course = get(block, 'RÄTT');
+    const title = get(block, 'TITEL') || 'Rätt ' + (idx+1);
+    const desc  = get(block, 'BESKRIVNING');
+    const ings  = get(block, 'INGREDIENSER');
+    const steps = get(block, 'GÖR SÅ HÄR');
+    const wine  = get(block, 'VINTIPS');
+
+    const ingsHtml = ings ? ings.split('\n').map(l => {
+      const fromFreezer = l.includes('[FRYS]');
+      const clean = l.replace('[FRYS]','').replace(/^[-•]\s*/,'').trim();
+      if (!clean) return '';
+      return `<div class="${fromFreezer?'ing-have':'ing-miss'}">${fromFreezer?'✓ ':'+ '}${clean}${fromFreezer?' – från frysen!':''}</div>`;
+    }).join('') : '';
+
+    return `
+      <div class="recipe-card full-match">
+        <div class="recipe-head">
+          <h3>${courseEmoji[course]||'🍽️'} ${course ? course + ': ' : ''}${title}</h3>
+        </div>
+        ${desc ? `<div class="recipe-desc">${desc}</div>` : ''}
+        ${ingsHtml ? `<div class="recipe-ings">${ingsHtml}</div>` : ''}
+        ${steps ? `<button class="recipe-toggle" onclick="document.getElementById('menu-steps-${idx}').classList.toggle('open')">📖 Visa tillagning</button>
+        <div class="recipe-steps" id="menu-steps-${idx}" style="white-space:pre-line">${steps}</div>` : ''}
+        ${wine ? `<div class="recipe-wine">🍷 <b>Vintips:</b> ${wine}</div>` : ''}
+      </div>`;
+  }).join('');
+
+  if (shopping) {
+    html += `
+      <div class="recipe-card" style="border-left:3px solid var(--warn)">
+        <div class="recipe-head"><h3>🛒 Inköpslista</h3></div>
+        <div class="recipe-desc" style="white-space:pre-line;color:var(--text)">${shopping}</div>
+      </div>`;
+  }
+
+  out.innerHTML = html || `<div class="recipe-desc" style="white-space:pre-line">${text}</div>`;
+}
+
 // ── AI-KOCKEN ─────────────────────────────────────────────────────────
 const APIKEY_KEY = 'frysregister_apikey_v1';
 
@@ -1118,6 +1361,155 @@ function renderSummaryView() {
 
 function printSummary() {
   window.print();
+}
+
+// ── AI-MIDDAGSKOMPONÖREN ──────────────────────────────────────────────
+function toggleCourse(btn) { btn.classList.toggle('active'); }
+
+async function composeMenu() {
+  const btn = document.getElementById('menu-btn');
+  const out = document.getElementById('menu-result');
+  const wish = document.getElementById('menu-wish').value.trim();
+
+  const courses = [];
+  if (document.getElementById('course-starter').classList.contains('active')) courses.push('förrätt');
+  if (document.getElementById('course-main').classList.contains('active'))    courses.push('varmrätt');
+  if (document.getElementById('course-dessert').classList.contains('active')) courses.push('efterrätt');
+
+  if (!courses.length) { alert('Välj minst en rätt'); return; }
+  if (!items.length)   { alert('Frysen är tom – lägg in varor först'); return; }
+
+  const inventoryList = items.map(i =>
+    `- ${i.name} (${i.qty||1} förp${i.weight ? ', ' + i.weight + ' kg/förp' : ''}, kategori: ${i.category})`).join('\n');
+
+  const prompt = `Du är en svensk kock specialiserad på viltkött. Komponera en middag med: ${courses.join(' + ')}.
+${wish ? 'Önskemål: ' + wish : ''}
+
+Detta finns i mina frysar – utgå från detta så mycket som möjligt:
+${inventoryList}
+
+Sök gärna på nätet efter passande recept och inspiration.
+
+Svara på svenska i exakt detta format (upprepa rätt-blocket för varje rätt):
+=== RÄTT: (förrätt/varmrätt/efterrätt) ===
+TITEL: (rättens namn)
+BESKRIVNING: (1-2 meningar, nämn gärna om receptet är inspirerat från någon källa)
+INGREDIENSER: (en per rad med mängder för 4 personer, markera med [FRYS] det som tas ur frysen)
+GÖR SÅ HÄR: (numrerade steg, kortfattat)
+VINTIPS: (druva/region)
+
+=== INKÖPSLISTA ===
+(allt jag behöver handla som INTE finns i frysen, en vara per rad, grupperat är fint)`;
+
+  btn.disabled = true;
+  btn.textContent = '👨‍🍳 Komponerar menyn… (kan ta upp till en minut)';
+  out.innerHTML = '';
+
+  try {
+    const headers = { 'Content-Type': 'application/json' };
+    const apiKey = localStorage.getItem(APIKEY_KEY);
+    if (apiKey) {
+      headers['x-api-key'] = apiKey;
+      headers['anthropic-version'] = '2023-06-01';
+      headers['anthropic-dangerous-direct-browser-access'] = 'true';
+    }
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 3000,
+        messages: [{ role: 'user', content: prompt }],
+        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+      }),
+    });
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    const text = (data.content||[]).filter(b => b.type === 'text').map(b => b.text).join('\n');
+    if (!text) throw new Error('Tomt svar');
+    renderMenu(text, out);
+  } catch (err) {
+    out.innerHTML = `
+      <div style="background:rgba(224,112,112,0.1);border:1px solid rgba(224,112,112,0.3);border-radius:10px;padding:14px;font-size:13px;line-height:1.6;">
+        ⚠️ Kunde inte nå AI:n. Kontrollera att API-nyckeln är inlagd under ⚙️ Inställningar och att du har internet.
+      </div>`;
+  }
+  btn.disabled = false;
+  btn.textContent = '🍽️ Komponera meny';
+}
+
+function renderMenu(text, out) {
+  // Dela på === och para ihop rubriker (RÄTT/INKÖPSLISTA) med efterföljande innehåll
+  const pieces = text.split(/===+/).map(p => p.trim()).filter(Boolean);
+  let html = '';
+  let shopping = '';
+
+  for (let i = 0; i < pieces.length; i++) {
+    const piece = pieces[i];
+
+    if (/^INKÖPSLISTA/i.test(piece)) {
+      // Innehållet kan ligga i samma bit eller i nästa
+      const inline = piece.replace(/^INKÖPSLISTA:?/i, '').trim();
+      shopping = inline || (pieces[i+1] && !/^RÄTT/i.test(pieces[i+1]) ? pieces[++i] : '');
+      continue;
+    }
+
+    const courseMatch = piece.match(/^RÄTT:\s*(.*)/i);
+    if (!courseMatch) continue;
+    const course = courseMatch[1].trim();
+    // Innehållet ligger antingen efter första raden i samma bit, eller i nästa bit
+    let body = piece.includes('\n') ? piece.slice(piece.indexOf('\n')+1) : '';
+    if (!body && pieces[i+1] && !/^(RÄTT|INKÖPSLISTA)/i.test(pieces[i+1])) body = pieces[++i];
+
+    const get = (label) => {
+      const re = new RegExp(label + ':([\\s\\S]*?)(?=\\n[A-ZÅÄÖ ]{4,}:|$)');
+      const m = body.match(re);
+      return m ? m[1].trim() : '';
+    };
+    const title = get('TITEL');
+    const desc  = get('BESKRIVNING');
+    const ings  = get('INGREDIENSER');
+    const steps = get('GÖR SÅ HÄR');
+    const wine  = get('VINTIPS');
+
+    const courseEmoji = /förrätt/i.test(course) ? '🥗' : /efterrätt/i.test(course) ? '🍰' : '🍖';
+
+    const ingsHtml = ings.split('\n').map(l => {
+      const fromFreezer = l.includes('[FRYS]');
+      const clean = l.replace('[FRYS]','').replace(/^[-•]\s*/,'').trim();
+      if (!clean) return '';
+      return `<div class="${fromFreezer?'ing-have':'ing-miss'}">${fromFreezer?'✓ ':'+ '}${clean}${fromFreezer?' – från frysen!':''}</div>`;
+    }).join('');
+
+    html += `
+      <div class="recipe-card full-match" style="margin-top:12px">
+        <div class="recipe-head">
+          <h3>${courseEmoji} ${title || course}</h3>
+          <span class="match-badge full">${course}</span>
+        </div>
+        ${desc ? `<div class="recipe-desc">${desc}</div>` : ''}
+        ${ingsHtml ? `<div class="recipe-ings">${ingsHtml}</div>` : ''}
+        ${steps ? `<button class="recipe-toggle" onclick="this.nextElementSibling.classList.toggle('open')">📖 Visa tillagning</button>
+        <div class="recipe-steps" style="white-space:pre-line">${steps}</div>` : ''}
+        ${wine ? `<div class="recipe-wine">🍷 <b>Vintips:</b> ${wine}</div>` : ''}
+      </div>`;
+  }
+
+  if (shopping) {
+    html += `
+      <div class="recipe-card" style="margin-top:12px;border-left:3px solid var(--warn)">
+        <div class="recipe-head"><h3>🛒 Inköpslista</h3></div>
+        <div class="recipe-desc" style="white-space:pre-line;color:var(--text)">${shopping}</div>
+        <button class="recipe-toggle" onclick="copyShopping(this)">📋 Kopiera listan</button>
+      </div>`;
+  }
+
+  out.innerHTML = html || `<div class="recipe-desc" style="white-space:pre-line">${text}</div>`;
+}
+
+function copyShopping(btn) {
+  const text = btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(() => toast('Inköpslista kopierad 🛒'));
 }
 
 // ── VIEWS ─────────────────────────────────────────────────────────────
