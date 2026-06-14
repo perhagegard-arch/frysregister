@@ -588,8 +588,13 @@
     </div>
 
     <div class="panel">
-      <h3>Frysarnas namn</h3>
-      <div id="fridge-editor"></div>
+      <h3>Platser &amp; fack</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Fasta platser – ändras i koden (FRYSAR-konfigurationen).</p>
+      <div style="font-size:14px;line-height:2.2;">
+        🧊 <b>Stående frysen</b> – Fack 1–6<br>
+        🧊 <b>Stora frysen</b> – Hänghylla 1–3, Back 1–4, Småhyllan<br>
+        🧊 <b>Lilla frysen</b> – ingen fackindelning
+      </div>
     </div>
 
     <div class="panel">
@@ -669,6 +674,10 @@
       <div class="form-group">
         <label>Frys</label>
         <select id="f-fridge"></select>
+      </div>
+      <div class="form-group" id="slot-group">
+        <label>Fack</label>
+        <select id="f-slot"></select>
       </div>
     </div>
 
@@ -761,10 +770,27 @@
 <script>
 // ── DATA ──────────────────────────────────────────────────────────────
 const STORAGE_KEY = 'frysregister_v1';
-const FRIDGES_KEY = 'frysregister_fridges_v1';
 const HISTORY_KEY = 'frysregister_history_v1';
 
-const DEFAULT_FRIDGES = ['Garage', 'Källare', 'Kök'];
+// ── Platskonfiguration – ändra här för att lägga till/ta bort platser och fack ──
+const FRYSAR = [
+  {
+    namn: 'Stående frysen',
+    fack: ['Fack 1','Fack 2','Fack 3','Fack 4','Fack 5','Fack 6']
+  },
+  {
+    namn: 'Stora frysen',
+    fackgrupper: [
+      { grupp: 'Hänghylla', fack: ['Hänghylla 1','Hänghylla 2','Hänghylla 3'] },
+      { grupp: 'Back',      fack: ['Back 1','Back 2','Back 3','Back 4'] },
+      { grupp: '',          fack: ['Småhyllan'] }
+    ]
+  },
+  {
+    namn: 'Lilla frysen',
+    fack: []
+  }
+];
 const CATEGORY_EMOJI = { 'Vilt':'🦌','Fågel':'🦢','Fisk':'🐟','Grönsaker':'🥦','Bär & Frukt':'🫐','Lagad mat':'🍲','Chark & Korv':'🌭','Bröd & Bak':'🍞','Övrigt':'📦' };
 
 // Rekommenderade frystider i månader (baserat på Livsmedelsverket, Svenskt Kött, Råd & Rön)
@@ -795,19 +821,19 @@ function recommendedMonths(item) {
   return base.months;
 }
 
-let items = [], fridges = [], history = [];
+const fridges = FRYSAR.map(f => f.namn);
+
+let items = [], history = [];
 let activeTab = 'Alla', activeFilter = 'Alla', activeCutFilter = 'Alla';
 let editId = null, deleteId = null;
 let currentView = 'inventory';
 
 function load() {
   try { items   = JSON.parse(localStorage.getItem(STORAGE_KEY))  || []; } catch { items = []; }
-  try { fridges = JSON.parse(localStorage.getItem(FRIDGES_KEY))  || [...DEFAULT_FRIDGES]; } catch { fridges = [...DEFAULT_FRIDGES]; }
   try { history = JSON.parse(localStorage.getItem(HISTORY_KEY))  || []; } catch { history = []; }
 }
 function save() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-  localStorage.setItem(FRIDGES_KEY, JSON.stringify(fridges));
   localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
 }
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
@@ -1484,7 +1510,7 @@ function renderItems() {
     const kgTot = itemTotalKg(item);
 
     const meta = [
-      item.fridge,
+      item.slot ? item.fridge + ' · ' + item.slot : item.fridge,
       item.category === 'Vilt' && item.animal ? item.animal : null,
       item.cut || null,
       item.weight ? item.weight + ' kg/förp' : null,
@@ -1555,6 +1581,40 @@ function populateFridgeSelect() {
   const sel = document.getElementById('f-fridge');
   sel.innerHTML = fridges.map(f => `<option value="${f}">${f}</option>`).join('');
   if (activeTab !== 'Alla') sel.value = activeTab;
+  sel.onchange = uppdateraSlotValj;
+  uppdateraSlotValj();
+}
+
+// Bygger om fack-dropdown baserat på vald frys
+function uppdateraSlotValj() {
+  const frysNamn = document.getElementById('f-fridge').value;
+  const frys     = FRYSAR.find(f => f.namn === frysNamn);
+  const group    = document.getElementById('slot-group');
+  const sel      = document.getElementById('f-slot');
+
+  const harFack = frys && (
+    (frys.fack && frys.fack.length > 0) ||
+    (frys.fackgrupper && frys.fackgrupper.length > 0)
+  );
+
+  if (!harFack) { group.style.display = 'none'; return; }
+  group.style.display = '';
+  sel.innerHTML = '<option value="">– Välj fack –</option>';
+
+  if (frys.fackgrupper) {
+    frys.fackgrupper.forEach(fg => {
+      if (fg.grupp) {
+        const og = document.createElement('optgroup');
+        og.label = fg.grupp;
+        fg.fack.forEach(f => { const o = new Option(f, f); og.appendChild(o); });
+        sel.appendChild(og);
+      } else {
+        fg.fack.forEach(f => sel.appendChild(new Option(f, f)));
+      }
+    });
+  } else {
+    frys.fack.forEach(f => sel.appendChild(new Option(f, f)));
+  }
 }
 function updateSubcat() {
   const cat = document.getElementById('f-cat').value;
@@ -1590,6 +1650,8 @@ function openEdit(id) {
   document.getElementById('f-season').value = item.season||'';
   document.getElementById('f-note').value   = item.note||'';
   document.getElementById('f-shelf').value  = item.shelfMonths||'';
+  uppdateraSlotValj();
+  document.getElementById('f-slot').value   = item.slot||'';
   updateSubcat();
   document.getElementById('modal-bg').classList.add('open');
 }
@@ -1604,6 +1666,7 @@ function clearForm() {
   document.getElementById('f-season').value = new Date().getFullYear();
   document.getElementById('f-note').value = '';
   document.getElementById('f-shelf').value = '';
+  uppdateraSlotValj();
 }
 function closeModal(e) {
   if (e && e.target !== document.getElementById('modal-bg')) return;
@@ -1625,6 +1688,7 @@ function saveItem() {
     name,
     category: cat,
     fridge:   document.getElementById('f-fridge').value,
+    slot:     document.getElementById('f-slot').value || '',
     animal,
     cut,
     qty:      parseInt(document.getElementById('f-qty').value)||1,
@@ -1733,26 +1797,8 @@ function renderHistoryView() {
 }
 
 // ── SETTINGS ──────────────────────────────────────────────────────────
-function renderSettings() {
-  const el = document.getElementById('fridge-editor');
-  el.innerHTML = fridges.map((f, idx) => `
-    <div class="fridge-edit-row">
-      <input type="text" value="${f}" onchange="renameFridge(${idx}, this.value)">
-    </div>`).join('');
-}
-
-function renameFridge(idx, newName) {
-  newName = newName.trim();
-  if (!newName) { renderSettings(); return; }
-  const oldName = fridges[idx];
-  fridges[idx] = newName;
-  items.forEach(i => { if (i.fridge === oldName) i.fridge = newName; });
-  history.forEach(h => { if (h.fridge === oldName) h.fridge = newName; });
-  if (activeTab === oldName) activeTab = newName;
-  save();
-  toast('Frys omdöpt till "' + newName + '"');
-  render();
-}
+// Platser och fack är konfigurerade i FRYSAR-konstanten – ingen runtime-editor behövs.
+function renderSettings() {}
 
 function saveAIKeyFromSettings() {
   const v = document.getElementById('settings-apikey').value.trim();
